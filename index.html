@@ -10,58 +10,40 @@
   <meta property="og:description" content="Professional Python Developer from Bangladesh." />
   <meta property="og:type" content="website" />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    /* =============================================
-       CSS VARIABLES — CUSTOMIZE COLORS HERE
-       ============================================= */
     :root {
       --bg-primary:    #050a0f;
       --bg-secondary:  #080f18;
       --bg-card:       #0c1520;
       --bg-card-hover: #111d2e;
-
-      --neon-green:  #00ffaa;
-      --neon-blue:   #00b4ff;
-      --neon-purple: #b44dff;
-      --neon-pink:   #ff2d78;
-      --neon-yellow: #ffe600;
-
-      --border:       rgba(0,255,170,0.12);
-      --border-bright:rgba(0,255,170,0.35);
-
-      --text-primary:   #e8f4f8;
-      --text-secondary: #7a9bb5;
-      --text-muted:     #3d5a72;
-
-      --font-main: 'Outfit', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-
-      --glow-green:  0 0 20px rgba(0,255,170,0.4),  0 0 60px rgba(0,255,170,0.15);
-      --glow-blue:   0 0 20px rgba(0,180,255,0.4),  0 0 60px rgba(0,180,255,0.15);
-      --glow-purple: 0 0 20px rgba(180,77,255,0.4), 0 0 60px rgba(180,77,255,0.15);
-
+      --neon-green:    #00ffaa;
+      --neon-blue:     #00b4ff;
+      --neon-purple:   #b44dff;
+      --neon-pink:     #ff2d78;
+      --neon-yellow:   #ffe600;
+      --border:        rgba(0,255,170,0.12);
+      --border-bright: rgba(0,255,170,0.35);
+      --text-primary:  #e8f4f8;
+      --text-secondary:#7a9bb5;
+      --text-muted:    #3d5a72;
+      --font-main:     'Outfit', sans-serif;
+      --font-mono:     'JetBrains Mono', monospace;
+      --glow-green:    0 0 20px rgba(0,255,170,0.4), 0 0 60px rgba(0,255,170,0.15);
+      --glow-blue:     0 0 20px rgba(0,180,255,0.4), 0 0 60px rgba(0,180,255,0.15);
+      --glow-purple:   0 0 20px rgba(180,77,255,0.4),0 0 60px rgba(180,77,255,0.15);
       --radius: 12px;
-      --ease:   cubic-bezier(0.4, 0, 0.2, 1);
+      --ease:   cubic-bezier(0.4,0,0.2,1);
+      --nav-h:  68px;
     }
 
-    /* =============================================  RESET  */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: var(--font-main);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+    body { background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-main); line-height: 1.7; overflow-x: hidden; }
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: var(--bg-primary); }
     ::-webkit-scrollbar-thumb { background: var(--neon-green); border-radius: 3px; }
@@ -69,172 +51,87 @@
     a:hover { color: var(--neon-blue); }
     img { max-width: 100%; display: block; }
 
-    /* =============================================  GRID BG  */
+    /* GRID BACKGROUND */
     body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image:
-        linear-gradient(rgba(0,255,170,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,170,.025) 1px, transparent 1px);
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(0,255,170,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,170,.025) 1px, transparent 1px);
       background-size: 60px 60px;
     }
 
-    /* =============================================  NAVBAR  */
+    /* NAVBAR */
     .navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      height: 68px; padding: 0 6%;
+      height: var(--nav-h); padding: 0 6%;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(5,10,15,.88);
-      backdrop-filter: blur(20px);
+      background: rgba(5,10,15,.9); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo {
-      font-family: var(--font-mono);
-      font-size: 1rem; font-weight: 700;
-      color: var(--neon-green);
-      text-shadow: var(--glow-green);
-      letter-spacing: -.3px;
-    }
+    .nav-logo { font-family: var(--font-mono); font-size: 1rem; font-weight: 700; color: var(--neon-green); text-shadow: var(--glow-green); letter-spacing: -.3px; }
     .nav-logo em { color: var(--text-secondary); font-style: normal; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-family: var(--font-mono); font-size: .75rem;
-      color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;
-      position: relative; padding-bottom: 4px;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px; background: var(--neon-green);
-      box-shadow: var(--glow-green); transition: width .3s var(--ease);
-    }
+    .nav-links a { font-family: var(--font-mono); font-size: .75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; position: relative; padding-bottom: 4px; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--neon-green); box-shadow: var(--glow-green); transition: width .3s var(--ease); }
     .nav-links a:hover { color: var(--neon-green); }
     .nav-links a:hover::after { width: 100%; }
-    .nav-hire {
-      font-family: var(--font-mono); font-size: .75rem;
-      padding: 8px 18px; letter-spacing: 1px; text-transform: uppercase;
-      border: 1px solid var(--neon-green); border-radius: 6px;
-      color: var(--neon-green); transition: all .3s var(--ease);
-    }
-    .nav-hire:hover {
-      background: var(--neon-green); color: var(--bg-primary);
-      box-shadow: var(--glow-green); transform: translateY(-1px);
-    }
-    /* hamburger */
+    .nav-hire { font-family: var(--font-mono); font-size: .75rem; padding: 8px 18px; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--neon-green); border-radius: 6px; color: var(--neon-green); transition: all .3s var(--ease); }
+    .nav-hire:hover { background: var(--neon-green); color: var(--bg-primary); box-shadow: var(--glow-green); transform: translateY(-1px); }
     .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
     .burger span { width: 26px; height: 2px; background: var(--neon-green); border-radius: 2px; transition: all .3s var(--ease); }
-    .mob-nav {
-      display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 999;
-      background: rgba(5,10,15,.97); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem 6%; flex-direction: column; gap: 1rem;
-    }
+    .mob-nav { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 999; background: rgba(5,10,15,.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1.5rem 6%; flex-direction: column; gap: 1rem; }
     .mob-nav.open { display: flex; }
-    .mob-nav a {
-      font-family: var(--font-mono); font-size: .88rem; color: var(--text-secondary);
-      text-transform: uppercase; letter-spacing: 1px;
-      padding: .6rem 0; border-bottom: 1px solid var(--border);
-    }
+    .mob-nav a { font-family: var(--font-mono); font-size: .88rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; padding: .6rem 0; border-bottom: 1px solid var(--border); }
     .mob-nav a:last-child { border-bottom: none; }
 
-    /* =============================================  HELPERS  */
-    .wrap   { max-width: 1180px; margin: 0 auto; padding: 0 6%; }
-    .sec    { position: relative; z-index: 1; padding: 5.5rem 6%; }
-    .sec-c  { max-width: 1180px; margin: 0 auto; }
-    .sec-alt{ background: var(--bg-secondary); }
-    .tag-row{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: .8rem; }
-    .tag {
-      font-family: var(--font-mono); font-size: .62rem; letter-spacing: .5px;
-      text-transform: uppercase; padding: 3px 10px; border-radius: 4px;
-    }
-    .tg  { background: rgba(0,255,170,.1); color: var(--neon-green); border: 1px solid rgba(0,255,170,.2); }
-    .tb  { background: rgba(0,180,255,.1); color: var(--neon-blue);  border: 1px solid rgba(0,180,255,.2); }
-    .tp  { background: rgba(180,77,255,.1); color: var(--neon-purple); border: 1px solid rgba(180,77,255,.2); }
-    .tk  { background: rgba(255,45,120,.1); color: var(--neon-pink);  border: 1px solid rgba(255,45,120,.2); }
-    .ty  { background: rgba(255,230,0,.1);  color: var(--neon-yellow);border: 1px solid rgba(255,230,0,.2); }
-    .sec-label {
-      font-family: var(--font-mono); font-size: .7rem; letter-spacing: 3px;
-      text-transform: uppercase; color: var(--neon-green); margin-bottom: .6rem;
-    }
-    .sec-title {
-      font-size: clamp(1.9rem,3.8vw,2.9rem); font-weight: 800;
-      line-height: 1.15; margin-bottom: 1.2rem;
-    }
-    .hl  { color: var(--neon-green); }
-    .hlb { color: var(--neon-blue); }
-    .hlp { color: var(--neon-purple); }
-    .glow-line {
-      height: 1px; position: relative; z-index: 1;
-      background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
-      opacity: .4;
-    }
-    /* fade-in */
+    /* HELPERS */
+    .sec { position: relative; z-index: 1; padding: 5.5rem 6%; }
+    .sec-c { max-width: 1180px; margin: 0 auto; }
+    .sec-alt { background: var(--bg-secondary); }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: .8rem; }
+    .tag { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .5px; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; }
+    .tg { background: rgba(0,255,170,.1); color: var(--neon-green); border: 1px solid rgba(0,255,170,.2); }
+    .tb { background: rgba(0,180,255,.1); color: var(--neon-blue); border: 1px solid rgba(0,180,255,.2); }
+    .tp { background: rgba(180,77,255,.1); color: var(--neon-purple); border: 1px solid rgba(180,77,255,.2); }
+    .tk { background: rgba(255,45,120,.1); color: var(--neon-pink); border: 1px solid rgba(255,45,120,.2); }
+    .ty { background: rgba(255,230,0,.1); color: var(--neon-yellow); border: 1px solid rgba(255,230,0,.2); }
+    .sec-label { font-family: var(--font-mono); font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--neon-green); margin-bottom: .6rem; }
+    .sec-title { font-size: clamp(1.9rem,3.8vw,2.9rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem; }
+    .hl { color: var(--neon-green); }
+    .glow-line { height: 1px; position: relative; z-index: 1; background: linear-gradient(90deg, transparent, var(--neon-green), transparent); opacity: .4; }
     .fi { opacity: 0; transform: translateY(28px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
     .fi.show { opacity: 1; transform: translateY(0); }
 
-    /* =============================================  BUTTONS  */
-    .btn-p, .btn-s {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 26px; border-radius: 8px; font-family: var(--font-mono);
-      font-size: .8rem; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; cursor: pointer; transition: all .3s var(--ease);
-      border: none; text-decoration: none;
-    }
-    .btn-p {
-      background: var(--neon-green); color: var(--bg-primary);
-    }
-    .btn-p:hover {
-      box-shadow: var(--glow-green); transform: translateY(-2px); color: var(--bg-primary);
-    }
-    .btn-s {
-      background: transparent; color: var(--text-primary);
-      border: 1px solid var(--border-bright);
-    }
-    .btn-s:hover {
-      border-color: var(--neon-blue); color: var(--neon-blue);
-      box-shadow: var(--glow-blue); transform: translateY(-2px);
-    }
+    /* BUTTONS */
+    .btn-p, .btn-s { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 8px; font-family: var(--font-mono); font-size: .8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all .3s var(--ease); border: none; text-decoration: none; }
+    .btn-p { background: var(--neon-green); color: var(--bg-primary); }
+    .btn-p:hover { box-shadow: var(--glow-green); transform: translateY(-2px); color: var(--bg-primary); }
+    .btn-s { background: transparent; color: var(--text-primary); border: 1px solid var(--border-bright); }
+    .btn-s:hover { border-color: var(--neon-blue); color: var(--neon-blue); box-shadow: var(--glow-blue); transform: translateY(-2px); }
 
-    /* =============================================  PRELOADER  */
-    #preloader {
-      position: fixed; inset: 0; z-index: 9999; background: var(--bg-primary);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
-      transition: opacity .5s var(--ease), visibility .5s var(--ease);
-    }
+    /* PRELOADER */
+    #preloader { position: fixed; inset: 0; z-index: 9999; background: var(--bg-primary); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; transition: opacity .5s var(--ease), visibility .5s var(--ease); }
     #preloader.gone { opacity: 0; visibility: hidden; }
     .pre-logo { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--neon-green); text-shadow: var(--glow-green); }
-    .pre-bar  { width: 200px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .pre-bar { width: 200px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
     .pre-fill { height: 100%; background: linear-gradient(90deg, var(--neon-green), var(--neon-blue)); animation: prefill 1.6s ease forwards; }
     @keyframes prefill { from { width: 0 } to { width: 100% } }
-    .pre-txt  { font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted); letter-spacing: 3px; }
+    .pre-txt { font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted); letter-spacing: 3px; }
 
-    /* =============================================  SCROLL TOP  */
-    #scrollTop {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      width: 44px; height: 44px; border-radius: 8px;
-      background: var(--bg-card); border: 1px solid var(--border-bright);
-      color: var(--neon-green); font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; opacity: 0; pointer-events: none;
-      transition: all .3s var(--ease);
-    }
+    /* SCROLL TOP */
+    #scrollTop { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 44px; height: 44px; border-radius: 8px; background: var(--bg-card); border: 1px solid var(--border-bright); color: var(--neon-green); font-size: 1rem; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: all .3s var(--ease); }
     #scrollTop.show { opacity: 1; pointer-events: all; }
     #scrollTop:hover { background: var(--neon-green); color: var(--bg-primary); box-shadow: var(--glow-green); transform: translateY(-3px); }
 
-    /* =============================================  HERO  */
+    /* ===================== HERO ===================== */
     .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding-top: 68px; position: relative; overflow: hidden; z-index: 1;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      /* FIX: enough top padding so image clears the navbar on ALL screen sizes */
+      padding-top: calc(var(--nav-h) + 3rem);
+      padding-bottom: 4rem;
+      position: relative; overflow: hidden; z-index: 1;
     }
-    .hero::before {
-      content: ''; position: absolute; top: -20%; right: -10%; width: 580px; height: 580px; pointer-events: none;
-      background: radial-gradient(circle, rgba(0,255,170,.07), transparent 70%);
-      animation: orb 9s ease-in-out infinite alternate;
-    }
-    .hero::after {
-      content: ''; position: absolute; bottom: -20%; left: -10%; width: 480px; height: 480px; pointer-events: none;
-      background: radial-gradient(circle, rgba(0,180,255,.07), transparent 70%);
-      animation: orb 11s ease-in-out infinite alternate-reverse;
-    }
+    .hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 580px; height: 580px; pointer-events: none; background: radial-gradient(circle, rgba(0,255,170,.07), transparent 70%); animation: orb 9s ease-in-out infinite alternate; }
+    .hero::after  { content: ''; position: absolute; bottom: -20%; left: -10%; width: 480px; height: 480px; pointer-events: none; background: radial-gradient(circle, rgba(0,180,255,.07), transparent 70%); animation: orb 11s ease-in-out infinite alternate-reverse; }
     @keyframes orb { from { transform: translate(0,0) } to { transform: translate(28px,-28px) } }
 
     .hero-grid {
@@ -242,74 +139,33 @@
       gap: 4rem; align-items: center;
       max-width: 1180px; margin: 0 auto; padding: 0 6%; width: 100%;
     }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,255,170,.08); border: 1px solid rgba(0,255,170,.25);
-      border-radius: 50px; padding: 6px 16px; margin-bottom: 1.4rem;
-      font-family: var(--font-mono); font-size: .7rem; color: var(--neon-green); letter-spacing: 1.5px; text-transform: uppercase;
-    }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,255,170,.08); border: 1px solid rgba(0,255,170,.25); border-radius: 50px; padding: 6px 16px; margin-bottom: 1.4rem; font-family: var(--font-mono); font-size: .7rem; color: var(--neon-green); letter-spacing: 1.5px; text-transform: uppercase; }
     .pulse { width: 6px; height: 6px; background: var(--neon-green); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
-
-    .hero-name {
-      font-size: clamp(2.8rem,5.5vw,4.8rem); font-weight: 900;
-      line-height: 1.05; letter-spacing: -2px; margin-bottom: .4rem;
-    }
+    .hero-name { font-size: clamp(2.8rem,5.5vw,4.8rem); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: .4rem; }
     .neon-txt { color: var(--neon-green); text-shadow: 0 0 30px rgba(0,255,170,.5), 0 0 80px rgba(0,255,170,.2); }
-    .hero-role {
-      font-family: var(--font-mono); font-size: clamp(1rem,1.8vw,1.25rem);
-      color: var(--neon-blue); margin-bottom: 1.4rem; letter-spacing: 1px; min-height: 2rem;
-    }
+    .hero-role { font-family: var(--font-mono); font-size: clamp(1rem,1.8vw,1.25rem); color: var(--neon-blue); margin-bottom: 1.4rem; letter-spacing: 1px; min-height: 2rem; }
     .cursor-blink { border-right: 2px solid var(--neon-blue); animation: blink .8s step-end infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
     .hero-desc { font-size: 1rem; color: var(--text-secondary); margin-bottom: 2.2rem; max-width: 500px; line-height: 1.85; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .hero-stats {
-      display: flex; gap: 2rem; margin-top: 2.8rem;
-      padding-top: 2rem; border-top: 1px solid var(--border);
-    }
+    .hero-stats { display: flex; gap: 2rem; margin-top: 2.8rem; padding-top: 2rem; border-top: 1px solid var(--border); }
     .stat-n { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 900; color: var(--neon-green); display: block; }
     .stat-l { font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
-    /* profile ring */
+    /* PROFILE RING */
     .hero-img-wrap { display: flex; justify-content: center; position: relative; }
-    .ring-outer {
-      position: relative; width: 330px; height: 330px;
-    }
-    .ring-outer::before {
-      content: ''; position: absolute; inset: -3px; border-radius: 50%;
-      background: conic-gradient(var(--neon-green), var(--neon-blue), var(--neon-purple), var(--neon-green));
-      animation: spin 4s linear infinite; z-index: 0;
-    }
+    .ring-outer { position: relative; width: 330px; height: 330px; }
+    .ring-outer::before { content: ''; position: absolute; inset: -3px; border-radius: 50%; background: conic-gradient(var(--neon-green), var(--neon-blue), var(--neon-purple), var(--neon-green)); animation: spin 4s linear infinite; z-index: 0; }
     @keyframes spin { to { transform: rotate(360deg) } }
-    .ring-inner {
-      position: absolute; inset: 3px; border-radius: 50%; overflow: hidden;
-      background: var(--bg-secondary); z-index: 1;
-    }
-    /* CUSTOMIZE: add your photo URL inside this img */
-    .ring-inner img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: saturate(.9) brightness(.95);
-    }
-    .ring-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg,#0c1520,#0f1e30);
-      font-size: 5.5rem; color: var(--neon-green); opacity: .5;
-    }
-    .float-badge {
-      position: absolute; z-index: 2;
-      background: var(--bg-card); border: 1px solid var(--border-bright);
-      border-radius: 10px; padding: 9px 13px;
-      font-family: var(--font-mono); font-size: .68rem;
-      display: flex; align-items: center; gap: 7px;
-      backdrop-filter: blur(10px);
-    }
+    .ring-inner { position: absolute; inset: 3px; border-radius: 50%; overflow: hidden; background: var(--bg-secondary); z-index: 1; }
+    .ring-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: saturate(.95) brightness(.97); }
+    .float-badge { position: absolute; z-index: 2; background: var(--bg-card); border: 1px solid var(--border-bright); border-radius: 10px; padding: 9px 13px; font-family: var(--font-mono); font-size: .68rem; display: flex; align-items: center; gap: 7px; backdrop-filter: blur(10px); }
     .fb1 { top: 8%; right: -18px; animation: fbob 4s ease-in-out infinite; }
     .fb2 { bottom: 12%; left: -22px; animation: fbob 4s ease-in-out 1.5s infinite; }
     @keyframes fbob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 
-    /* =============================================  ABOUT  */
+    /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
     .about-text p { color: var(--text-secondary); margin-bottom: 1.1rem; font-size: .98rem; line-height: 1.9; }
     .info-list { list-style: none; margin-top: 1.4rem; }
@@ -318,62 +174,39 @@
     .info-list .lbl { font-family: var(--font-mono); font-size: .68rem; color: var(--neon-green); text-transform: uppercase; letter-spacing: 1px; min-width: 88px; }
     .info-list .val { color: var(--text-primary); }
 
-    /* terminal */
-    .terminal {
-      background: #020810; border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden; font-family: var(--font-mono); font-size: .8rem;
-    }
-    .t-head {
-      background: #0a1220; padding: 11px 14px;
-      display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--border);
-    }
+    /* TERMINAL */
+    .terminal { background: #020810; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; font-family: var(--font-mono); font-size: .8rem; }
+    .t-head { background: #0a1220; padding: 11px 14px; display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--border); }
     .tdot { width: 10px; height: 10px; border-radius: 50%; }
     .tdot:nth-child(1){background:#ff5f57} .tdot:nth-child(2){background:#ffbd2e} .tdot:nth-child(3){background:#28c940}
     .t-fname { margin-left: 8px; color: var(--text-muted); font-size: .7rem; }
     .t-body { padding: 1.4rem; line-height: 2.1; }
-    .tc{color:#3d5a72} .tk{color:var(--neon-purple)} .tf{color:var(--neon-blue)} .ts{color:var(--neon-green)} .tv{color:#ff8c42} .tn{color:var(--neon-yellow)} .to{color:var(--text-secondary)}
+    .tc{color:#3d5a72} .tk-t{color:var(--neon-purple)} .tf{color:var(--neon-blue)} .ts{color:var(--neon-green)} .tv{color:#ff8c42} .to{color:var(--text-secondary)}
 
-    /* =============================================  SKILLS  */
+    /* SKILLS */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(270px,1fr)); gap: 1.3rem; margin-top: 2.8rem; }
-    .skill-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.7rem; transition: all .3s var(--ease); position: relative; overflow: hidden;
-    }
-    .skill-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg,var(--neon-green),var(--neon-blue));
-      opacity: 0; transition: opacity .3s;
-    }
+    .skill-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.7rem; transition: all .3s var(--ease); position: relative; overflow: hidden; }
+    .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg,var(--neon-green),var(--neon-blue)); opacity: 0; transition: opacity .3s; }
     .skill-card:hover { background: var(--bg-card-hover); border-color: var(--border-bright); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,.4); }
     .skill-card:hover::before { opacity: 1; }
     .sk-icon { width: 46px; height: 46px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: .9rem; }
     .skill-card h3 { font-size: .95rem; font-weight: 700; margin-bottom: .6rem; }
     .skill-card p { color: var(--text-secondary); font-size: .84rem; line-height: 1.7; }
 
-    /* =============================================  SERVICES  */
+    /* SERVICES */
     .svc-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(290px,1fr)); gap: 1.3rem; margin-top: 2.8rem; }
-    .svc-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.8rem; transition: all .3s var(--ease);
-    }
+    .svc-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.8rem; transition: all .3s var(--ease); }
     .svc-card:hover { border-color: var(--border-bright); background: var(--bg-card-hover); transform: translateY(-4px); }
     .svc-num { font-family: var(--font-mono); font-size: .62rem; color: var(--neon-green); letter-spacing: 2px; margin-bottom: .9rem; }
     .svc-icon { font-size: 2rem; margin-bottom: .9rem; }
     .svc-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .6rem; }
     .svc-card p { color: var(--text-secondary); font-size: .87rem; line-height: 1.8; }
 
-    /* =============================================  PROJECTS  */
+    /* PROJECTS */
     .proj-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(330px,1fr)); gap: 1.3rem; margin-top: 2.8rem; }
-    .proj-card {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      overflow: hidden; transition: all .3s var(--ease);
-    }
+    .proj-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all .3s var(--ease); }
     .proj-card:hover { border-color: var(--border-bright); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,.4); }
-    .proj-img {
-      height: 170px; background: linear-gradient(135deg,#0c1520,#0f2030);
-      display: flex; align-items: center; justify-content: center; font-size: 3rem;
-      position: relative; overflow: hidden;
-    }
+    .proj-img { height: 170px; background: linear-gradient(135deg,#0c1520,#0f2030); display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; }
     .proj-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, var(--bg-card)); }
     .proj-body { padding: 1.4rem; }
     .proj-meta { display: flex; align-items: center; gap: 10px; margin-bottom: .6rem; }
@@ -383,58 +216,36 @@
     .proj-card h3 a { color: var(--text-primary); }
     .proj-card h3 a:hover { color: var(--neon-green); }
     .proj-card p { color: var(--text-secondary); font-size: .85rem; line-height: 1.7; }
-    .proj-link {
-      display: inline-flex; align-items: center; gap: 5px; margin-top: .9rem;
-      font-family: var(--font-mono); font-size: .68rem; color: var(--neon-green); text-transform: uppercase; letter-spacing: 1px;
-    }
+    .proj-link { display: inline-flex; align-items: center; gap: 5px; margin-top: .9rem; font-family: var(--font-mono); font-size: .68rem; color: var(--neon-green); text-transform: uppercase; letter-spacing: 1px; }
     .proj-link i { font-size: .6rem; transition: transform .2s; }
     .proj-link:hover i { transform: translateX(4px); }
 
-    /* =============================================  CONTACT  */
+    /* CONTACT */
     .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3.5rem; align-items: start; }
     .contact-info h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: .9rem; }
     .contact-info > p { color: var(--text-secondary); margin-bottom: 1.8rem; line-height: 1.8; }
     .c-items { display: flex; flex-direction: column; gap: .9rem; }
-    .c-item {
-      display: flex; align-items: center; gap: .9rem; padding: .95rem 1.1rem;
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-      transition: all .3s var(--ease); text-decoration: none; color: inherit;
-    }
+    .c-item { display: flex; align-items: center; gap: .9rem; padding: .95rem 1.1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); transition: all .3s var(--ease); text-decoration: none; color: inherit; }
     .c-item:hover { border-color: var(--border-bright); background: var(--bg-card-hover); color: inherit; }
     .c-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: .95rem; flex-shrink: 0; }
     .c-lbl { font-family: var(--font-mono); font-size: .62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; display: block; }
     .c-val { font-size: .9rem; color: var(--text-primary); font-weight: 500; }
-    /* social */
     .socials { display: flex; gap: .65rem; flex-wrap: wrap; margin-top: 1.8rem; }
-    .soc-btn {
-      width: 40px; height: 40px; border-radius: 8px;
-      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
-      font-size: .95rem; color: var(--text-secondary); transition: all .3s var(--ease);
-    }
+    .soc-btn { width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: .95rem; color: var(--text-secondary); transition: all .3s var(--ease); }
     .soc-btn:hover { border-color: var(--neon-green); color: var(--neon-green); box-shadow: var(--glow-green); transform: translateY(-2px); }
-    /* form */
     .form { display: flex; flex-direction: column; gap: .9rem; }
     .frow { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
     .fg { display: flex; flex-direction: column; gap: 5px; }
     .fg label { font-family: var(--font-mono); font-size: .67rem; color: var(--neon-green); text-transform: uppercase; letter-spacing: 1px; }
-    .fg input, .fg textarea, .fg select {
-      background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
-      padding: 11px 14px; color: var(--text-primary); font-family: var(--font-main);
-      font-size: .9rem; outline: none; transition: border .3s var(--ease); resize: none; width: 100%;
-    }
+    .fg input, .fg textarea, .fg select { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; color: var(--text-primary); font-family: var(--font-main); font-size: .9rem; outline: none; transition: border .3s var(--ease); resize: none; width: 100%; }
     .fg input:focus, .fg textarea:focus { border-color: var(--neon-green); box-shadow: 0 0 0 3px rgba(0,255,170,.07); }
     .fg textarea { min-height: 128px; }
     .fg select option { background: var(--bg-card); }
-    .btn-send {
-      width: 100%; padding: 13px; background: var(--neon-green); color: var(--bg-primary);
-      font-family: var(--font-mono); font-size: .82rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; border: none; border-radius: 8px; cursor: pointer;
-      transition: all .3s var(--ease); margin-top: .3rem;
-    }
+    .btn-send { width: 100%; padding: 13px; background: var(--neon-green); color: var(--bg-primary); font-family: var(--font-mono); font-size: .82rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: 8px; cursor: pointer; transition: all .3s var(--ease); margin-top: .3rem; }
     .btn-send:hover { box-shadow: var(--glow-green); transform: translateY(-2px); }
     #formMsg { text-align: center; font-family: var(--font-mono); font-size: .75rem; margin-top: .4rem; display: none; }
 
-    /* =============================================  FOOTER  */
+    /* FOOTER */
     footer { position: relative; z-index: 1; background: var(--bg-secondary); border-top: 1px solid var(--border); padding: 3rem 6% 2rem; }
     .ft-inner { max-width: 1180px; margin: 0 auto; }
     .ft-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
@@ -443,18 +254,17 @@
     .ft-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
     .ft-links a { color: var(--text-secondary); font-size: .86rem; transition: all .3s var(--ease); }
     .ft-links a:hover { color: var(--neon-green); padding-left: 4px; }
-    .ft-bottom {
-      border-top: 1px solid var(--border); padding-top: 1.4rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    .ft-bottom { border-top: 1px solid var(--border); padding-top: 1.4rem; display: flex; align-items: center; justify-content: space-between; }
     .ft-copy { font-family: var(--font-mono); font-size: .68rem; color: var(--text-muted); }
     .ft-copy span { color: var(--neon-green); }
 
-    /* =============================================  RESPONSIVE  */
+    /* RESPONSIVE */
     @media (max-width: 1024px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
       .hero-img-wrap { order: -1; }
-      .ring-outer { width: 270px; height: 270px; }
+      /* FIX: On tablet stacked layout, give even more breathing room from navbar */
+      .hero { padding-top: calc(var(--nav-h) + 2.5rem); }
+      .ring-outer { width: 260px; height: 260px; }
       .hero-desc { margin: 0 auto 2rem; }
       .hero-btns { justify-content: center; }
       .hero-stats { justify-content: center; }
@@ -471,31 +281,32 @@
       .ft-grid { grid-template-columns: 1fr; gap: 1.8rem; }
       .ft-bottom { flex-direction: column; gap: .8rem; text-align: center; }
       .sec { padding: 4rem 5%; }
+      /* FIX: Mobile — clear navbar + extra gap */
+      .hero { padding-top: calc(var(--nav-h) + 2rem); padding-bottom: 3rem; }
+      .ring-outer { width: 220px; height: 220px; }
     }
     @media (max-width: 480px) {
-      .ring-outer { width: 210px; height: 210px; }
       .skills-grid, .svc-grid { grid-template-columns: 1fr; }
       .hero-stats { gap: 1.2rem; }
+      .ring-outer { width: 200px; height: 200px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ======= PRELOADER ======= -->
+<!-- PRELOADER -->
 <div id="preloader">
   <div class="pre-logo">&lt;NS /&gt;</div>
   <div class="pre-bar"><div class="pre-fill"></div></div>
   <div class="pre-txt">INITIALIZING...</div>
 </div>
 
-<!-- ======= SCROLL TOP ======= -->
+<!-- SCROLL TOP -->
 <button id="scrollTop" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 
-<!-- ======= NAVBAR ======= -->
+<!-- NAVBAR -->
 <nav class="navbar">
-  <!-- CUSTOMIZE: site name -->
   <div class="nav-logo"><em>&lt;</em> Dev. Nayeem Sheikh <em>/&gt;</em></div>
-
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -503,15 +314,10 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-
   <a class="nav-hire" href="#contact">Hire Me</a>
-
-  <div class="burger" id="burger">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- MOBILE NAV -->
 <div class="mob-nav" id="mobNav">
   <a href="#about">About</a>
   <a href="#skills">Skills</a>
@@ -520,36 +326,19 @@
   <a href="#contact">Contact</a>
 </div>
 
-<!-- ======= HERO ======= -->
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-grid">
 
     <div class="hero-content">
-      <div class="hero-badge">
-        <span class="pulse"></span>
-        Available for Freelance Projects
-      </div>
-
-      <!-- CUSTOMIZE: your name -->
-      <h1 class="hero-name">
-        Nayeem<br>
-        <span class="neon-txt">Sheikh</span>
-      </h1>
-
+      <div class="hero-badge"><span class="pulse"></span>Available for Freelance Projects</div>
+      <h1 class="hero-name">Nayeem<br><span class="neon-txt">Sheikh</span></h1>
       <p class="hero-role" id="typeTarget">&gt; Python Developer<span class="cursor-blink">_</span></p>
-
-      <!-- CUSTOMIZE: short bio -->
-      <p class="hero-desc">
-        A passionate Python Developer from Bangladesh, crafting intelligent automation tools,
-        bots, web scrapers, and backend systems. I turn complex ideas into clean, efficient code.
-      </p>
-
+      <p class="hero-desc">A passionate Python Developer from Bangladesh, crafting intelligent automation tools, bots, web scrapers, and backend systems. I turn complex ideas into clean, efficient code.</p>
       <div class="hero-btns">
         <a class="btn-p" href="#contact"><i class="fas fa-paper-plane"></i> Get In Touch</a>
         <a class="btn-s" href="#projects"><i class="fas fa-code"></i> View Projects</a>
       </div>
-
-      <!-- CUSTOMIZE: your stats -->
       <div class="hero-stats">
         <div><span class="stat-n">3+</span><span class="stat-l">Years Exp</span></div>
         <div><span class="stat-n">50+</span><span class="stat-l">Projects</span></div>
@@ -558,21 +347,12 @@
       </div>
     </div>
 
-    <!-- PROFILE IMAGE — CUSTOMIZE -->
+    <!-- PROFILE PHOTO — using img.jpg from same folder -->
     <div class="hero-img-wrap">
       <div class="ring-outer">
         <div class="ring-inner">
-          <!--
-            CUSTOMIZE: Replace with your photo.
-            Option A — Local file: put photo.jpg in /public/ folder, then use src="photo.jpg"
-            Option B — External URL: src="https://your-image-link.jpg"
-
-            DELETE the div.ring-placeholder below when adding your image.
-          -->
-          <div class="ring-placeholder"><i class="fas fa-user-circle"></i></div>
-          <!-- <img src="photo.jpg" alt="Nayeem Sheikh" /> -->
+          <img src="img.jpg" alt="Nayeem Sheikh — Python Developer" />
         </div>
-
         <div class="float-badge fb1">
           <i class="fab fa-python" style="color:var(--neon-blue)"></i>
           <span style="color:var(--neon-blue)">Python Dev</span>
@@ -589,33 +369,27 @@
 
 <div class="glow-line"></div>
 
-<!-- ======= ABOUT ======= -->
+<!-- ABOUT -->
 <section class="sec sec-alt" id="about">
   <div class="sec-c">
     <div class="about-grid">
-
       <div class="about-text fi">
         <div class="sec-label">01 — About Me</div>
         <h2 class="sec-title">Building the Future<br><span class="hl">One Script</span> at a Time</h2>
-
-        <!-- CUSTOMIZE: your bio -->
         <p>Hi, I'm <strong style="color:var(--neon-green)">Nayeem Sheikh</strong>, a dedicated Python Developer from <strong>Bangladesh</strong>. I specialise in building powerful automation tools, intelligent bots, web scrapers, and backend APIs that solve real-world problems efficiently.</p>
         <p>With 3+ years of hands-on experience I've worked on everything from Telegram & Discord bots to full-scale scraping engines and REST APIs. I believe great software is about reliability, scalability, and clean architecture.</p>
         <p>When I'm not coding I'm writing tutorials, contributing to open-source, or experimenting with AI integrations.</p>
-
-        <!-- CUSTOMIZE: personal info -->
         <ul class="info-list">
           <li><span class="lbl">Name</span>     <span class="val">Nayeem Sheikh</span></li>
-          <li><span class="lbl">Location</span> <span class="val">Bangladesh 🇧🇩</span></li>
-          <!-- CUSTOMIZE: your email -->
-          <li><span class="lbl">Email</span>    <span class="val"><a href="mailto: sultanmahamud.mail@email.com">sultanmahamud@email.com</a></span></li>
-          <li><span class="lbl">Status</span>   <span class="val" style="color:var(--neon-green)">● Open to Work</span></li>
+          <li><span class="lbl">Location</span> <span class="val">Gaibandha, Rangpur, Bangladesh &#x1F1E7;&#x1F1E9;</span></li>
+          <li><span class="lbl">Email</span>    <span class="val"><a href="mailto:sultanmahamud.mail@gmail.com">sultanmahamud.mail@gmail.com</a></span></li>
+          <li><span class="lbl">Telegram</span> <span class="val"><a href="https://t.me/nayeemxty" target="_blank">@nayeemxty</a></span></li>
+          <li><span class="lbl">Status</span>   <span class="val" style="color:var(--neon-green)">&#9679; Open to Work</span></li>
           <li><span class="lbl">Freelance</span><span class="val">Available</span></li>
         </ul>
       </div>
 
       <div class="fi" style="transition-delay:.2s">
-        <!-- Terminal code card -->
         <div class="terminal">
           <div class="t-head">
             <div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>
@@ -624,8 +398,8 @@
           <div class="t-body">
             <div><span class="tc"># Developer Profile</span></div>
             <div>&nbsp;</div>
-            <div><span class="tk">class</span> <span class="tf">Developer</span><span class="to">:</span></div>
-            <div>&nbsp;&nbsp;<span class="tk">def</span> <span class="tf">__init__</span><span class="to">(self):</span></div>
+            <div><span class="tk-t">class</span> <span class="tf">Developer</span><span class="to">:</span></div>
+            <div>&nbsp;&nbsp;<span class="tk-t">def</span> <span class="tf">__init__</span><span class="to">(self):</span></div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tv">self</span>.name <span class="to">=</span> <span class="ts">"Nayeem Sheikh"</span></div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tv">self</span>.role <span class="to">=</span> <span class="ts">"Python Developer"</span></div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tv">self</span>.location <span class="to">=</span> <span class="ts">"Bangladesh"</span></div>
@@ -634,87 +408,74 @@
             <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="ts">"Scraping"</span><span class="to">,</span> <span class="ts">"APIs"</span><span class="to">,</span> <span class="ts">"AI"</span></div>
             <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="to">]</span></div>
             <div>&nbsp;</div>
-            <div>&nbsp;&nbsp;<span class="tk">def</span> <span class="tf">is_available</span><span class="to">(self):</span></div>
-            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tk">return</span> <span class="ts">True</span> <span class="tc"># Always!</span></div>
+            <div>&nbsp;&nbsp;<span class="tk-t">def</span> <span class="tf">is_available</span><span class="to">(self):</span></div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tk-t">return</span> <span class="ts">True</span> <span class="tc"># Always!</span></div>
             <div>&nbsp;</div>
             <div><span class="tv">me</span> <span class="to">=</span> <span class="tf">Developer</span><span class="to">()</span></div>
           </div>
         </div>
-
-        <!-- CUSTOMIZE: link to your CV file — put cv.pdf in /public/ folder -->
-        <a class="btn-s" href="cv.pdf" download="Nayeem_Sheikh_CV"
-           style="margin-top:1.4rem;width:100%;justify-content:center;">
+        <a class="btn-s" href="cv.pdf" download="Nayeem_Sheikh_CV" style="margin-top:1.4rem;width:100%;justify-content:center;">
           <i class="fas fa-download"></i> Download Resume / CV
         </a>
       </div>
-
     </div>
   </div>
 </section>
 
 <div class="glow-line"></div>
 
-<!-- ======= SKILLS ======= -->
+<!-- SKILLS -->
 <section class="sec" id="skills">
   <div class="sec-c">
     <div class="fi" style="text-align:center;max-width:580px;margin:0 auto">
       <div class="sec-label">02 — Tech Stack</div>
-      <h2 class="sec-title">My <span class="hl">Skills</span> & Expertise</h2>
+      <h2 class="sec-title">My <span class="hl">Skills</span> &amp; Expertise</h2>
       <p style="color:var(--text-secondary)">Tools and technologies I use to deliver robust, scalable solutions.</p>
     </div>
-
-    <!-- CUSTOMIZE: add / remove skill cards -->
     <div class="skills-grid">
-
       <div class="skill-card fi">
         <div class="sk-icon" style="background:rgba(0,180,255,.1);color:var(--neon-blue)"><i class="fab fa-python"></i></div>
         <h3>Python Development</h3>
         <p>Core expertise — automation, scripting, tool building, and production-grade backend code.</p>
         <div class="tag-row"><span class="tag tb">Python 3.x</span><span class="tag tg">OOP</span><span class="tag tg">Async / Await</span><span class="tag tb">Threading</span></div>
       </div>
-
       <div class="skill-card fi" style="transition-delay:.1s">
         <div class="sk-icon" style="background:rgba(0,255,170,.1);color:var(--neon-green)"><i class="fas fa-robot"></i></div>
         <h3>Bot Development</h3>
         <p>Feature-rich bots for Telegram, Discord, WhatsApp — from simple commands to full AI pipelines.</p>
         <div class="tag-row"><span class="tag tg">Telegram Bot</span><span class="tag tp">Discord.py</span><span class="tag tg">Pyrogram</span><span class="tag tb">Aiogram</span></div>
       </div>
-
       <div class="skill-card fi" style="transition-delay:.2s">
         <div class="sk-icon" style="background:rgba(255,230,0,.1);color:var(--neon-yellow)"><i class="fas fa-spider"></i></div>
         <h3>Web Scraping</h3>
         <p>Extract and process data from any website — static pages, JS-heavy SPAs, and APIs.</p>
         <div class="tag-row"><span class="tag ty">BeautifulSoup</span><span class="tag ty">Scrapy</span><span class="tag tg">Selenium</span><span class="tag tb">Playwright</span></div>
       </div>
-
       <div class="skill-card fi" style="transition-delay:.3s">
         <div class="sk-icon" style="background:rgba(180,77,255,.1);color:var(--neon-purple)"><i class="fas fa-server"></i></div>
-        <h3>API & Backend</h3>
+        <h3>API &amp; Backend</h3>
         <p>Fast, secure, documented REST APIs with auth, database integration, and cloud deployment.</p>
         <div class="tag-row"><span class="tag tp">FastAPI</span><span class="tag tp">Flask</span><span class="tag tb">Django</span><span class="tag tg">REST API</span></div>
       </div>
-
       <div class="skill-card fi" style="transition-delay:.4s">
         <div class="sk-icon" style="background:rgba(255,45,120,.1);color:var(--neon-pink)"><i class="fas fa-brain"></i></div>
-        <h3>AI & Automation</h3>
+        <h3>AI &amp; Automation</h3>
         <p>Integrating OpenAI, Gemini, and open-source LLMs into production workflows.</p>
         <div class="tag-row"><span class="tag tk">OpenAI API</span><span class="tag tk">LangChain</span><span class="tag tb">NumPy</span><span class="tag tg">Pandas</span></div>
       </div>
-
       <div class="skill-card fi" style="transition-delay:.5s">
         <div class="sk-icon" style="background:rgba(0,255,170,.1);color:var(--neon-green)"><i class="fas fa-database"></i></div>
-        <h3>Database & DevOps</h3>
+        <h3>Database &amp; DevOps</h3>
         <p>SQL and NoSQL databases, Redis caching, Docker containers, and Git-based workflows.</p>
         <div class="tag-row"><span class="tag tg">SQLite</span><span class="tag tb">MongoDB</span><span class="tag ty">Redis</span><span class="tag tp">Git / GitHub</span></div>
       </div>
-
     </div>
   </div>
 </section>
 
 <div class="glow-line"></div>
 
-<!-- ======= SERVICES ======= -->
+<!-- SERVICES -->
 <section class="sec sec-alt" id="services">
   <div class="sec-c">
     <div class="fi" style="text-align:center;max-width:580px;margin:0 auto">
@@ -722,59 +483,20 @@
       <h2 class="sec-title">Services I <span class="hl">Offer</span></h2>
       <p style="color:var(--text-secondary)">End-to-end Python development services tailored to your needs.</p>
     </div>
-
-    <!-- CUSTOMIZE: add / remove service cards -->
     <div class="svc-grid">
-
-      <div class="svc-card fi">
-        <div class="svc-num">// 01</div>
-        <div class="svc-icon">🤖</div>
-        <h3>Telegram & Discord Bots</h3>
-        <p>Custom bots with inline keyboards, payments, file handling, scheduling, group management, and AI integrations — production-ready.</p>
-      </div>
-
-      <div class="svc-card fi" style="transition-delay:.1s">
-        <div class="svc-num">// 02</div>
-        <div class="svc-icon">🕷️</div>
-        <h3>Web Scraping & Data Extraction</h3>
-        <p>Collect, parse, and structure data from any site — e-commerce, social media, news portals, and dynamic JS-heavy platforms.</p>
-      </div>
-
-      <div class="svc-card fi" style="transition-delay:.2s">
-        <div class="svc-num">// 03</div>
-        <div class="svc-icon">⚡</div>
-        <h3>Task Automation</h3>
-        <p>Desktop automation, file processing pipelines, scheduled jobs, email automation, and browser automation using Python.</p>
-      </div>
-
-      <div class="svc-card fi" style="transition-delay:.3s">
-        <div class="svc-num">// 04</div>
-        <div class="svc-icon">🔌</div>
-        <h3>REST API Development</h3>
-        <p>Secure, well-documented REST APIs using FastAPI or Flask with JWT auth, database integration, and cloud deployment.</p>
-      </div>
-
-      <div class="svc-card fi" style="transition-delay:.4s">
-        <div class="svc-num">// 05</div>
-        <div class="svc-icon">🧠</div>
-        <h3>AI-Powered Applications</h3>
-        <p>Integrating ChatGPT, Gemini, or open-source LLMs — chatbots, content generators, summarisers, and more.</p>
-      </div>
-
-      <div class="svc-card fi" style="transition-delay:.5s">
-        <div class="svc-num">// 06</div>
-        <div class="svc-icon">🛠️</div>
-        <h3>Custom Python Tools</h3>
-        <p>Any custom solution you need — CLI utilities, data processors, file converters, or backend services.</p>
-      </div>
-
+      <div class="svc-card fi"><div class="svc-num">// 01</div><div class="svc-icon">&#x1F916;</div><h3>Telegram &amp; Discord Bots</h3><p>Custom bots with inline keyboards, payments, file handling, scheduling, group management, and AI integrations — production-ready.</p></div>
+      <div class="svc-card fi" style="transition-delay:.1s"><div class="svc-num">// 02</div><div class="svc-icon">&#x1F577;&#xFE0F;</div><h3>Web Scraping &amp; Data Extraction</h3><p>Collect, parse, and structure data from any site — e-commerce, social media, news portals, and dynamic JS-heavy platforms.</p></div>
+      <div class="svc-card fi" style="transition-delay:.2s"><div class="svc-num">// 03</div><div class="svc-icon">&#x26A1;</div><h3>Task Automation</h3><p>Desktop automation, file processing pipelines, scheduled jobs, email automation, and browser automation using Python.</p></div>
+      <div class="svc-card fi" style="transition-delay:.3s"><div class="svc-num">// 04</div><div class="svc-icon">&#x1F50C;</div><h3>REST API Development</h3><p>Secure, well-documented REST APIs using FastAPI or Flask with JWT auth, database integration, and cloud deployment.</p></div>
+      <div class="svc-card fi" style="transition-delay:.4s"><div class="svc-num">// 05</div><div class="svc-icon">&#x1F9E0;</div><h3>AI-Powered Applications</h3><p>Integrating ChatGPT, Gemini, or open-source LLMs — chatbots, content generators, summarisers, and more.</p></div>
+      <div class="svc-card fi" style="transition-delay:.5s"><div class="svc-num">// 06</div><div class="svc-icon">&#x1F6E0;&#xFE0F;</div><h3>Custom Python Tools</h3><p>Any custom solution you need — CLI utilities, data processors, file converters, or backend services.</p></div>
     </div>
   </div>
 </section>
 
 <div class="glow-line"></div>
 
-<!-- ======= PROJECTS ======= -->
+<!-- PROJECTS -->
 <section class="sec" id="projects">
   <div class="sec-c">
     <div class="fi" style="text-align:center;max-width:580px;margin:0 auto">
@@ -782,85 +504,23 @@
       <h2 class="sec-title">Recent <span class="hl">Projects</span></h2>
       <p style="color:var(--text-secondary)">Explore my latest work, tools, and open-source contributions.</p>
     </div>
-
-    <!-- CUSTOMIZE: replace with your actual project cards -->
     <div class="proj-grid">
-
-      <div class="proj-card fi">
-        <div class="proj-img">🤖</div>
-        <div class="proj-body">
-          <div class="proj-meta"><span class="proj-cat">Telegram Bot</span><span class="proj-date">Jan 2025</span></div>
-          <h3><a href="#">Advanced Telegram Bot with AI Integration</a></h3>
-          <p>Feature-rich Telegram bot with ChatGPT integration, inline keyboards, file handling, and automated responses.</p>
-          <!-- CUSTOMIZE: GitHub/demo link -->
-          <a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="proj-card fi" style="transition-delay:.1s">
-        <div class="proj-img">🕷️</div>
-        <div class="proj-body">
-          <div class="proj-meta"><span class="proj-cat">Web Scraper</span><span class="proj-date">Dec 2024</span></div>
-          <h3><a href="#">Multi-threaded Amazon Price Scraper</a></h3>
-          <p>Scalable scraping tool for tracking product prices across thousands of listings — real-time data pipeline.</p>
-          <a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="proj-card fi" style="transition-delay:.2s">
-        <div class="proj-img">⚡</div>
-        <div class="proj-body">
-          <div class="proj-meta"><span class="proj-cat">API</span><span class="proj-date">Nov 2024</span></div>
-          <h3><a href="#">FastAPI REST Backend with JWT Auth</a></h3>
-          <p>Production-grade REST API built with FastAPI, PostgreSQL, and a complete JWT authentication system.</p>
-          <a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="proj-card fi" style="transition-delay:.3s">
-        <div class="proj-img">🧠</div>
-        <div class="proj-body">
-          <div class="proj-meta"><span class="proj-cat">AI Tool</span><span class="proj-date">Oct 2024</span></div>
-          <h3><a href="#">AI Document Summariser Bot</a></h3>
-          <p>Telegram bot that accepts PDF and text files and returns intelligent summaries using the OpenAI API.</p>
-          <a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="proj-card fi" style="transition-delay:.4s">
-        <div class="proj-img">🗄️</div>
-        <div class="proj-body">
-          <div class="proj-meta"><span class="proj-cat">Automation</span><span class="proj-date">Sep 2024</span></div>
-          <h3><a href="#">Bulk Email Automation System</a></h3>
-          <p>Scheduled bulk email sender with HTML templates, tracking, unsubscribe handling, and SMTP rotation.</p>
-          <a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="proj-card fi" style="transition-delay:.5s">
-        <div class="proj-img">🔌</div>
-        <div class="proj-body">
-          <div class="proj-meta"><span class="proj-cat">Discord Bot</span><span class="proj-date">Aug 2024</span></div>
-          <h3><a href="#">Discord Server Manager Bot</a></h3>
-          <p>Full-featured Discord bot with moderation commands, role management, welcome messages, and logging.</p>
-          <a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
+      <div class="proj-card fi"><div class="proj-img">&#x1F916;</div><div class="proj-body"><div class="proj-meta"><span class="proj-cat">Telegram Bot</span><span class="proj-date">Jan 2025</span></div><h3><a href="#">Advanced Telegram Bot with AI Integration</a></h3><p>Feature-rich Telegram bot with ChatGPT integration, inline keyboards, file handling, and automated responses.</p><a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="proj-card fi" style="transition-delay:.1s"><div class="proj-img">&#x1F577;&#xFE0F;</div><div class="proj-body"><div class="proj-meta"><span class="proj-cat">Web Scraper</span><span class="proj-date">Dec 2024</span></div><h3><a href="#">Multi-threaded Amazon Price Scraper</a></h3><p>Scalable scraping tool for tracking product prices across thousands of listings — real-time data pipeline.</p><a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="proj-card fi" style="transition-delay:.2s"><div class="proj-img">&#x26A1;</div><div class="proj-body"><div class="proj-meta"><span class="proj-cat">API</span><span class="proj-date">Nov 2024</span></div><h3><a href="#">FastAPI REST Backend with JWT Auth</a></h3><p>Production-grade REST API built with FastAPI, PostgreSQL, and a complete JWT authentication system.</p><a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="proj-card fi" style="transition-delay:.3s"><div class="proj-img">&#x1F9E0;</div><div class="proj-body"><div class="proj-meta"><span class="proj-cat">AI Tool</span><span class="proj-date">Oct 2024</span></div><h3><a href="#">AI Document Summariser Bot</a></h3><p>Telegram bot that accepts PDF and text files and returns intelligent summaries using the OpenAI API.</p><a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="proj-card fi" style="transition-delay:.4s"><div class="proj-img">&#x1F5C4;&#xFE0F;</div><div class="proj-body"><div class="proj-meta"><span class="proj-cat">Automation</span><span class="proj-date">Sep 2024</span></div><h3><a href="#">Bulk Email Automation System</a></h3><p>Scheduled bulk email sender with HTML templates, tracking, unsubscribe handling, and SMTP rotation.</p><a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a></div></div>
+      <div class="proj-card fi" style="transition-delay:.5s"><div class="proj-img">&#x1F50C;</div><div class="proj-body"><div class="proj-meta"><span class="proj-cat">Discord Bot</span><span class="proj-date">Aug 2024</span></div><h3><a href="#">Discord Server Manager Bot</a></h3><p>Full-featured Discord bot with moderation commands, role management, welcome messages, and logging.</p><a class="proj-link" href="#">View Project <i class="fas fa-arrow-right"></i></a></div></div>
     </div>
-
     <div style="text-align:center;margin-top:2.8rem">
-      <!-- CUSTOMIZE: GitHub profile link -->
-      <a class="btn-s" href="https://github.com/yourusername" target="_blank">
-        <i class="fab fa-github"></i> More on GitHub
-      </a>
+      <a class="btn-s" href="https://github.com/sultanmahamud26" target="_blank"><i class="fab fa-github"></i> More on GitHub</a>
     </div>
   </div>
 </section>
 
 <div class="glow-line"></div>
 
-<!-- ======= CONTACT ======= -->
+<!-- CONTACT -->
 <section class="sec sec-alt" id="contact">
   <div class="sec-c">
     <div class="fi" style="text-align:center;max-width:580px;margin:0 auto;margin-bottom:3rem">
@@ -868,55 +528,42 @@
       <h2 class="sec-title">Let's <span class="hl">Work Together</span></h2>
       <p style="color:var(--text-secondary)">Have a project in mind? My inbox is always open.</p>
     </div>
-
     <div class="contact-grid">
 
-      <!-- Left: contact info -->
       <div class="fi">
         <div class="contact-info">
           <h3>Contact Information</h3>
           <p>Whether it's a new project, a quick question, or just to say hello — reach out anytime.</p>
         </div>
         <div class="c-items">
-
-          <!-- CUSTOMIZE: your email -->
-          <a class="c-item" href="mailto: sultanmahamud.mail@email.com">
+          <a class="c-item" href="mailto:sultanmahamud.mail@gmail.com">
             <div class="c-icon" style="background:rgba(0,255,170,.1);color:var(--neon-green)"><i class="fas fa-envelope"></i></div>
-            <div><span class="c-lbl">Email</span><span class="c-val">sultanmahamud@email.com</span></div>
+            <div><span class="c-lbl">Email</span><span class="c-val">sultanmahamud.mail@gmail.com</span></div>
           </a>
-
-          <!-- CUSTOMIZE: your WhatsApp number -->
           <a class="c-item" href="https://wa.me/8801788740123" target="_blank">
             <div class="c-icon" style="background:rgba(0,180,255,.1);color:var(--neon-blue)"><i class="fab fa-whatsapp"></i></div>
             <div><span class="c-lbl">WhatsApp</span><span class="c-val">+880 17-8874-0123</span></div>
           </a>
-
-          <!-- CUSTOMIZE: your Telegram -->
           <a class="c-item" href="https://t.me/nayeemxty" target="_blank">
             <div class="c-icon" style="background:rgba(180,77,255,.1);color:var(--neon-purple)"><i class="fab fa-telegram-plane"></i></div>
             <div><span class="c-lbl">Telegram</span><span class="c-val">@nayeemxty</span></div>
           </a>
-
           <div class="c-item" style="cursor:default">
             <div class="c-icon" style="background:rgba(0,255,170,.1);color:var(--neon-green)"><i class="fas fa-map-marker-alt"></i></div>
-            <div><span class="c-lbl">Location</span><span class="c-val">Bangladesh 🇧🇩</span></div>
+            <div><span class="c-lbl">Location</span><span class="c-val">Bangladesh &#x1F1E7;&#x1F1E9;</span></div>
           </div>
-
         </div>
-
-        <!-- CUSTOMIZE: social media links -->
         <div class="socials">
-          <a class="soc-btn" href="https://github.com/sultanmahamud26"     target="_blank" title="GitHub">   <i class="fab fa-github"></i></a>
-          <a class="soc-btn" href="https://linkedin.com/in/sultanmahamud26" target="_blank" title="LinkedIn"> <i class="fab fa-linkedin-in"></i></a>
-          <a class="soc-btn" href="https://t.me/nayeemxty"            target="_blank" title="Telegram"> <i class="fab fa-telegram-plane"></i></a>
-          <a class="soc-btn" href="https://facebook.com/sultanmahmudnayeem"   target="_blank" title="Facebook"> <i class="fab fa-facebook-f"></i></a>
-          <a class="soc-btn" href="https://x.com/sultanmahamud26"    target="_blank" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
-          <a class="soc-btn" href="https://youtube.com/@urnayeemofficial"   target="_blank" title="YouTube">  <i class="fab fa-youtube"></i></a>
-          <a class="soc-btn" href="https://fiverr.com/yourusername"     target="_blank" title="Fiverr">   <i class="fas fa-briefcase"></i></a>
+          <a class="soc-btn" href="https://github.com/sultanmahamud26"       target="_blank" title="GitHub">   <i class="fab fa-github"></i></a>
+          <a class="soc-btn" href="https://linkedin.com/in/sultanmahamud26"  target="_blank" title="LinkedIn"> <i class="fab fa-linkedin-in"></i></a>
+          <a class="soc-btn" href="https://t.me/nayeemxty"                   target="_blank" title="Telegram"> <i class="fab fa-telegram-plane"></i></a>
+          <a class="soc-btn" href="https://facebook.com/nayeemsheikhbd"  target="_blank" title="Facebook"> <i class="fab fa-facebook-f"></i></a>
+          <a class="soc-btn" href="https://x.com/sultanmahamud26"            target="_blank" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+          <a class="soc-btn" href="https://youtube.com/@nayeemsheikhbd"    target="_blank" title="YouTube">  <i class="fab fa-youtube"></i></a>
+          <a class="soc-btn" href="https://fiverr.com/yourusername"          target="_blank" title="Fiverr">   <i class="fas fa-briefcase"></i></a>
         </div>
       </div>
 
-      <!-- Right: contact form -->
       <div class="form fi" style="transition-delay:.2s">
         <div class="frow">
           <div class="fg"><label>Your Name</label><input type="text" id="cName" placeholder="John Doe" /></div>
@@ -936,10 +583,7 @@
           </select>
         </div>
         <div class="fg"><label>Message</label><textarea id="cMsg" placeholder="Tell me about your project..."></textarea></div>
-
-        <button class="btn-send" id="sendBtn">
-          <i class="fas fa-paper-plane" style="margin-right:8px"></i>Send Message
-        </button>
+        <button class="btn-send" id="sendBtn"><i class="fas fa-paper-plane" style="margin-right:8px"></i>Send Message</button>
         <div id="formMsg"></div>
       </div>
 
@@ -949,23 +593,21 @@
 
 <div class="glow-line"></div>
 
-<!-- ======= FOOTER ======= -->
+<!-- FOOTER -->
 <footer>
   <div class="ft-inner">
     <div class="ft-grid">
-
       <div class="ft-brand">
         <div class="nav-logo"><em>&lt;</em> Dev. Nayeem Sheikh <em>/&gt;</em></div>
         <p>Professional Python Developer from Bangladesh. Building automation tools, bots, and backend solutions that make a real difference.</p>
-        <!-- CUSTOMIZE: social links -->
         <div class="socials" style="margin-top:1rem">
-          <a class="soc-btn" href="https://github.com/yourusername"     target="_blank"><i class="fab fa-github"></i></a>
-          <a class="soc-btn" href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          <a class="soc-btn" href="https://t.me/yourusername"            target="_blank"><i class="fab fa-telegram-plane"></i></a>
-          <a class="soc-btn" href="https://facebook.com/yourusername"   target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="soc-btn" href="https://github.com/sultanmahamud26"      target="_blank"><i class="fab fa-github"></i></a>
+          <a class="soc-btn" href="https://linkedin.com/in/sultanmahamud26" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a class="soc-btn" href="https://t.me/nayeemxty"                  target="_blank"><i class="fab fa-telegram-plane"></i></a>
+          <a class="soc-btn" href="https://facebook.com/nayeemsheikhbd" target="_blank"><i class="fab fa-
+-f"></i></a>
         </div>
       </div>
-
       <div>
         <div class="ft-title">Quick Links</div>
         <ul class="ft-links">
@@ -977,7 +619,6 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-
       <div>
         <div class="ft-title">Services</div>
         <ul class="ft-links">
@@ -989,22 +630,18 @@
           <li><a href="#services">Automation</a></li>
         </ul>
       </div>
-
       <div>
         <div class="ft-title">Contact</div>
         <ul class="ft-links">
-          <!-- CUSTOMIZE -->
-          <li><a href="mailto:your@email.com">your@email.com</a></li>
-          <li><a href="https://t.me/yourusername"          target="_blank">Telegram</a></li>
-          <li><a href="https://wa.me/8801XXXXXXXXX"        target="_blank">WhatsApp</a></li>
-          <li><a href="https://fiverr.com/yourusername"    target="_blank">Fiverr</a></li>
-          <li><a href="https://upwork.com/yourusername"    target="_blank">Upwork</a></li>
-          <li><a href="https://github.com/yourusername"    target="_blank">GitHub</a></li>
+          <li><a href="mailto:sultanmahamud26@gmail.com">sultanmahamud26@gmail.com</a></li>
+          <li><a href="https://t.me/nayeemxty"                  target="_blank">Telegram</a></li>
+          <li><a href="https://wa.me/8801788740123"              target="_blank">WhatsApp</a></li>
+          <li><a href="https://fiverr.com/yourusername"          target="_blank">Fiverr</a></li>
+          <li><a href="https://github.com/sultanmahamud26"       target="_blank">GitHub</a></li>
+          <li><a href="https://youtube.com/@urnayeemofficial"    target="_blank">YouTube</a></li>
         </ul>
       </div>
-
     </div>
-
     <div class="ft-bottom">
       <div class="ft-copy">&copy; <span id="yr"></span> <span>Dev. Nayeem Sheikh</span>. All rights reserved.</div>
       <div class="ft-copy">Built with <span style="color:var(--neon-pink)">&#9829;</span> in Bangladesh</div>
@@ -1012,13 +649,10 @@
   </div>
 </footer>
 
-<!-- ======= JAVASCRIPT ======= -->
 <script>
   // Preloader
   window.addEventListener('load', function () {
-    setTimeout(function () {
-      document.getElementById('preloader').classList.add('gone');
-    }, 1700);
+    setTimeout(function () { document.getElementById('preloader').classList.add('gone'); }, 1700);
   });
 
   // Year
@@ -1029,9 +663,7 @@
   var mobNav = document.getElementById('mobNav');
   burger.addEventListener('click', function () { mobNav.classList.toggle('open'); });
   document.addEventListener('click', function (e) {
-    if (!mobNav.contains(e.target) && !burger.contains(e.target)) {
-      mobNav.classList.remove('open');
-    }
+    if (!mobNav.contains(e.target) && !burger.contains(e.target)) mobNav.classList.remove('open');
   });
   mobNav.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () { mobNav.classList.remove('open'); });
@@ -1039,96 +671,50 @@
 
   // Scroll-to-top
   var stBtn = document.getElementById('scrollTop');
-  window.addEventListener('scroll', function () {
-    stBtn.classList.toggle('show', window.scrollY > 420);
-  });
-  stBtn.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  window.addEventListener('scroll', function () { stBtn.classList.toggle('show', window.scrollY > 420); });
+  stBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
   // Fade-in on scroll
-  var fiEls = document.querySelectorAll('.fi');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('show'); });
   }, { threshold: 0.1 });
-  fiEls.forEach(function (el) { io.observe(el); });
+  document.querySelectorAll('.fi').forEach(function (el) { io.observe(el); });
 
   // Typing animation
-  var roles = ['Python Developer', 'Bot Developer', 'Web Scraping Expert', 'API Builder', 'Automation Engineer'];
+  var roles = ['Python Developer','Bot Developer','Web Scraping Expert','API Builder','Automation Engineer'];
   var ri = 0, ci = 0, del = false;
   var typeEl = document.getElementById('typeTarget');
-
   function type() {
     if (!typeEl) return;
     var cur = roles[ri];
-    var cursorSpan = '<span class="cursor-blink">_</span>';
+    var cs = '<span class="cursor-blink">_</span>';
     if (del) {
-      typeEl.innerHTML = '> ' + cur.substring(0, ci - 1) + cursorSpan;
-      ci--;
-      if (ci === 0) {
-        del = false;
-        ri = (ri + 1) % roles.length;
-        setTimeout(type, 500);
-        return;
-      }
+      typeEl.innerHTML = '> ' + cur.substring(0, ci - 1) + cs; ci--;
+      if (ci === 0) { del = false; ri = (ri + 1) % roles.length; setTimeout(type, 500); return; }
     } else {
-      typeEl.innerHTML = '> ' + cur.substring(0, ci + 1) + cursorSpan;
-      ci++;
-      if (ci === cur.length) {
-        del = true;
-        setTimeout(type, 2000);
-        return;
-      }
+      typeEl.innerHTML = '> ' + cur.substring(0, ci + 1) + cs; ci++;
+      if (ci === cur.length) { del = true; setTimeout(type, 2000); return; }
     }
     setTimeout(type, del ? 60 : 95);
   }
   setTimeout(type, 1900);
 
-  // Contact form
-  // CUSTOMIZE: Replace the mailto with Formspree for real email delivery:
-  // 1. Go to https://formspree.io → create free account → create form → copy form ID
-  // 2. Replace the fetch URL below with: https://formspree.io/f/YOUR_FORM_ID
+  // Contact form — sends via mailto (replace with Formspree for real delivery)
   document.getElementById('sendBtn').addEventListener('click', function () {
     var name    = document.getElementById('cName').value.trim();
-    var email   = document.getElementById('cEmail').value.trim();
+    var email   = document.getElementById('l').value.trim();
     var subject = document.getElementById('cSubject').value.trim() || 'Portfolio Contact';
     var service = document.getElementById('cService').value;
     var msg     = document.getElementById('cMsg').value.trim();
     var msgEl   = document.getElementById('formMsg');
-
     if (!name || !email || !msg) {
-      msgEl.style.display = 'block';
-      msgEl.style.color   = 'var(--neon-pink)';
-      msgEl.textContent   = '⚠ Please fill in Name, Email, and Message.';
-      return;
+      msgEl.style.display = 'block'; msgEl.style.color = 'var(--neon-pink)';
+      msgEl.textContent = '⚠ Please fill in Name, Email, and Message.'; return;
     }
-
-    /* --- Formspree integration (uncomment when ready) ---
-    fetch('https://formspree.io/f/YOUR_FORM_ID', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, subject, service, message: msg })
-    })
-    .then(function(r) {
-      if (r.ok) {
-        msgEl.style.color = 'var(--neon-green)';
-        msgEl.textContent = '✓ Message sent! I will reply shortly.';
-      } else {
-        msgEl.style.color = 'var(--neon-pink)';
-        msgEl.textContent = '✗ Something went wrong. Try again.';
-      }
-      msgEl.style.display = 'block';
-    });
-    return;
-    -------------------------------------------------------- */
-
-    // Fallback: open mail client
-    // CUSTOMIZE: replace your@email.com
     var body = 'Name: ' + name + '\nEmail: ' + email + '\nService: ' + service + '\n\nMessage:\n' + msg;
-    window.location.href = 'mailto:your@email.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    msgEl.style.display = 'block';
-    msgEl.style.color   = 'var(--neon-green)';
-    msgEl.textContent   = '✓ Opening your email client...';
+    window.location.href = 'mailto:sultanmahamud.mail@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    msgEl.style.display = 'block'; msgEl.style.color = 'var(--neon-green)';
+    msgEl.textContent = '✓ Opening your email client...';
   });
 </script>
 </body>
